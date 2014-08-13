@@ -36,5 +36,18 @@ namespace Core.Api.Controllers
 
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.InternalServerError, result.Errors));
         }
+
+        [Route("logs/fromdate/{fromDate:datetime}/todate/{toDate:datetime}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetLogsAsync(QueryCriteria queryCriteria, int start = 0, int count = 100)
+        {
+            var result = await logManager.QueryLogsAsync(queryCriteria, start, count);
+            if (result.IsSuccess)
+            {
+                return Ok(result.Result);
+            }
+
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.InternalServerError, result.Errors));
+        }
     }
 }

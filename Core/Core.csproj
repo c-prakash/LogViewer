@@ -47,6 +47,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>..\packages\LinqKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
       <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -100,6 +103,7 @@
       <DependentUpon>LogModel.edmx</DependentUpon>
       <LastGenOutput>LogModel.cs</LastGenOutput>
     </Content>
+    <None Include="app.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -118,6 +122,7 @@
     <Compile Include="Core\LogManagerResult`1.cs" />
     <Compile Include="Core\LogManagerResult.cs" />
     <Compile Include="Core\LogResult.cs" />
+    <Compile Include="Core\QueryCriteria.cs" />
     <Compile Include="Core\QueryResult.cs" />
     <Compile Include="Extension\EntityHelperMethods.cs" />
     <Compile Include="Extension\PredicateBuilder.cs" />

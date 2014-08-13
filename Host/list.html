@@ -5,17 +5,34 @@
             <span ng-show="model.pager" class="badge">{{model.pager.total}} found</span>
         </h1>
     </div>
+    
     <form ng-submit="search(model.filter)" class="form-group">
         <div class="col-sm-6">
             <div class="input-group form-group">
-                <!--<span class="input-group-addon"><label for="filter">Filter</label></span>-->
+                <span class="input-group-addon"><label for="filter">Filter</label></span>
                 <input type="text" id="filter" ng-model="model.filter" class="form-control" placeholder="Filter" autofocus>
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon"><label for="datetimepicker1">Start Date</label></span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="{{model.format}}" ng-model="model.fromDate" is-open="model.opened" min-date="model.minDate" max-date="model.maxDate" datepicker-options="model.dateOptions" ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group">
                 <span class="input-group-btn">
                     <button class="btn btn-primary">Search</button>
                 </span>
             </div>
         </div>
     </form>
+
     <div class="row" ng-show="model.message">
         <div class="col-sm-8">
             <div class="alert alert-danger alert-dismissable">{{model.message}}</div>

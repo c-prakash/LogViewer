@@ -29,7 +29,7 @@ app.service("logs", function ($http) {
 
 app.controller("ListController", function ($scope, logs, $sce, $routeParams, $location) {
     $scope.model = {};
-
+   
     function PagerButton(text, page, enabled, current) {
         this.text = $sce.trustAsHtml(text + "");
         this.page = page;
@@ -94,6 +94,7 @@ app.controller("ListController", function ($scope, logs, $sce, $routeParams, $lo
     $scope.model.logs = null;
     $scope.model.pager = null;
     $scope.model.waiting = true;
+    
 
     var itemsPerPage = 10;
     var page = $routeParams.page || 1;
@@ -109,4 +110,22 @@ app.controller("ListController", function ($scope, logs, $sce, $routeParams, $lo
         $scope.model.message = error;
         $scope.model.waiting = false;
     });
+
+    $scope.model.minDate = new Date();
+    $scope.model.fromDate = new Date();
+    $scope.model.toDate = new Date();
+    $scope.model.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
+    $scope.model.format = $scope.model.formats[0];
+
+    $scope.model.open = function ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.model.opened = true;
+    };
+
+    $scope.model.dateOptions = {
+        'year-format': "'yy'",
+        'starting-day': 1
+    };
 });
